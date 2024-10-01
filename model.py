@@ -7,9 +7,9 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 class OrderBook:
     def __init__(self):
-        self.buy_orders = defaultdict(list)  # Buy side (price -> orders)
-        self.sell_orders = defaultdict(list)  # Sell side (price -> orders)
-        self.transactions = []  # List to store completed transactions
+        self.buy_orders = defaultdict(list)  # Buy side 
+        self.sell_orders = defaultdict(list)  # Sell side 
+        self.transactions = []  #  store completed transactions
 
     def add_order(self, order_type, price, size):
         """ Add a new order and match it if possible """
@@ -42,7 +42,7 @@ class OrderBook:
                 self.buy_orders[price].append({'size': size, 'time': datetime.now()})
         
         elif order_type == 'sell':
-            # Match with buy orders
+            # Matc buy orders
             while size > 0 and self.buy_orders and max(self.buy_orders.keys()) >= price:
                 highest_buy_price = max(self.buy_orders.keys())
                 buy_order = self.buy_orders[highest_buy_price][0]
@@ -101,7 +101,7 @@ class GUI:
         self.root = root
         self.root.title("Limit Order Book")
 
-        #Dynamic variable to track 
+        #dynamic variable to track 
         self.total_buy_orders = 0
         self.total_sell_orders = 0
         self.total_transactions = 0
@@ -134,7 +134,7 @@ class GUI:
         self.label_bid_ask_spread = tk.Label(self.variable_frame, text=f"Bid-Ask Spread: {self.bid_ask_spread:2f}")
     
 
-        # Pack labels
+        #  labels
         self.label_bid_price.pack()
         self.label_ask_price.pack()
         self.label_bid_ask_spread.pack()
@@ -161,7 +161,7 @@ class GUI:
         self.transactions_text = tk.Text(root, height=10, width=60)
         self.transactions_text.grid(row=7, column=0, columnspan=2)
 
-        # Adjusted Matplotlib figure for plotting orders (smaller size)
+        # Adjusted Matplotlib figure for plotting orders 
         self.fig, self.ax = plt.subplots(figsize=(4, 2))  # Adjust figure size here
         self.canvas = FigureCanvasTkAgg(self.fig, master=root)
         self.canvas.get_tk_widget().grid(row=8, column=0, columnspan=2)
@@ -173,7 +173,7 @@ class GUI:
         self.bid_ask_spread = None
 
 
-        # Automatically generate random orders
+        #  generate random orders
         self.generate_random_order()
 
     def submit_order(self):
