@@ -11,4 +11,5 @@ This project implements a Limit Order Book (LOB) using Python's Tkinter for the 
 - Display the current state of buy and sell orders
 - Visualize order volumes at different prices using bar charts
 - Track completed transactions with timestamps
+![image](https://github.com/user-attachments/assets/9e5360d8-b997-4aa2-903c-db4fe5c7e2ed)
 
